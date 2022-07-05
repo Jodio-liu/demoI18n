@@ -7,7 +7,7 @@ spring:
 
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
-  type-aliases-package: mysql.xml.entity
+  type-aliases-package: com.example.demoi18n.entity
   configuration:
     cache-enabled: true
     use-generated-keys: true
