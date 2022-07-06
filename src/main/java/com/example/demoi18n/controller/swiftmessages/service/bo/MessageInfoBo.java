@@ -1,9 +1,9 @@
-package com.example.demoi18n.controller.api.vo;
+package com.example.demoi18n.controller.swiftmessages.service.bo;
 
 import lombok.Data;
 
 @Data
-public class MessageInfoVo {
+public class MessageInfoBo {
     /**
      * 消息id
      */

@@ -4,7 +4,15 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.example.demoi18n.mapper.SwiftMessagesSlaveMapper">
 
-    <select id="getMsgInfoByMsgIds" resultType="com.example.demoi18n.entity.SwiftMessagesPo">
+    <resultMap id="resultMap" type="com.example.demoi18n.entity.SwiftMessagesPo">
+        <id property="id" column="id"/>
+        <result property="msgContent" column="msg_content"/>
+        <result property="score" column="score"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <select id="selectMsgInfoByMsgIds" resultMap="resultMap">
         select
         <include refid="Base_Column_List"></include>
         from swift_messages
@@ -17,7 +25,8 @@
 
 
     <sql id="Base_Column_List">
-        id, msg_content,score,create_time,update_time
+        id
+        , msg_content,score,create_time,update_time
     </sql>
 
 </mapper>

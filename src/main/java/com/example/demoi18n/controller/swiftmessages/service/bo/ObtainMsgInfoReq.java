@@ -1,20 +1,19 @@
-package com.example.demoi18n.controller.api.vo;
+package com.example.demoi18n.controller.swiftmessages.service.bo;
 
 import lombok.Data;
 
 @Data
-public class SwiftMessagesRequest{
+public class ObtainMsgInfoReq {
     /**
      * 页码
      */
     private long pageIndex;
     /**
-     * 消息数量，默认3条
+     * 消息数量
      */
-    private long count = 3;
+    private long count;
     /**
      * 场景id，1001:跳舞
      */
     private long sceneId;
-
 }

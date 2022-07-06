@@ -5,6 +5,9 @@ spring:
     password: 123456
     driver-class-name: com.mysql.jdbc.Driver
 
+#  main: #解决循环依赖使用
+#    allow-circular-references: true
+
 mybatis:
   mapper-locations: classpath:mybatis/mapper/*.xml
   type-aliases-package: com.example.demoi18n.entity
@@ -13,3 +16,10 @@ mybatis:
     use-generated-keys: true
     default-executor-type: REUSE
     use-actual-param-name: true
+
+#bybatis分页插件配置
+pagehelper:
+  helper-dialect: mysql  #数据库
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql

@@ -1,6 +1,7 @@
-package com.example.demoi18n.controller.api.vo;
+package com.example.demoi18n.controller.swiftmessages.api.vo;
 
 import com.example.demoi18n.controller.baseVO.BaseRespData;
+import com.example.demoi18n.controller.swiftmessages.service.bo.MessageInfoBo;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -20,5 +21,5 @@ public class SwiftMessagesResponse extends BaseRespData {
     /**
      * 消息列表
      */
-    private List<MessageInfoVo> messages;
+    private List<MessageInfoBo> messages;
 }
