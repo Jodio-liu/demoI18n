@@ -4,6 +4,7 @@ import com.example.demoi18n.controller.swiftmessages.api.vo.SwiftMessagesRespons
 import com.example.demoi18n.controller.swiftmessages.service.SwiftMessageInfoService;
 import com.example.demoi18n.controller.swiftmessages.service.bo.MessageInfoBo;
 import com.example.demoi18n.controller.swiftmessages.service.bo.ObtainMsgInfoReq;
+import com.example.demoi18n.entity.MsgIdMapSceneIdsPo;
 import com.example.demoi18n.entity.SwiftMessagesPo;
 import com.example.demoi18n.mapper.MessagesSceneSlaveMapper;
 import com.example.demoi18n.mapper.SwiftMessagesSlaveMapper;
@@ -33,6 +34,7 @@ public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
     public SwiftMessagesResponse obtainMessagesInfoWithScene(ObtainMsgInfoReq obtainMsgInfoReq) {
         SwiftMessagesResponse swiftMessagesResponse = new SwiftMessagesResponse();
         List<Integer> msgIds = messagesSceneSlaveMapper.getMsgIdBySceneId(obtainMsgInfoReq.getSceneId());
+        List<MsgIdMapSceneIdsPo> sceneIdsByMsgIds = messagesSceneSlaveMapper.getSceneIdsByMsgIds(msgIds);
         if (msgIds.size() <= 0) {
             swiftMessagesResponse.setShow(false);
             return swiftMessagesResponse;

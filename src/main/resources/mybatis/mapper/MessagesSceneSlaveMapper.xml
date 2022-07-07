@@ -9,5 +9,15 @@
         where scene_id = #{sceneId}
     </select>
 
+    <select id="getSceneIdsByMsgIds" resultType="com.example.demoi18n.entity.MsgIdMapSceneIdsPo">
+        select distinct msg_id as msgId, group_concat(scene_id) as sceneIds
+        from messages_scene
+        where msg_id in
+        <foreach collection="msgIds" item="msgId" separator="," open="(" close=")">
+            #{msgId}
+        </foreach>
+        group by msg_id
+    </select>
+
 
 </mapper>
