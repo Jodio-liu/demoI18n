@@ -22,4 +22,9 @@ public class SwiftMessagesResponse extends BaseRespData {
      * 消息列表
      */
     private List<MessageInfoBo> messages;
+    /**
+     * 随机种子
+     */
+    private long seed;
+
 }

@@ -16,4 +16,8 @@ public class ObtainMsgInfoReq {
      * 场景id，1001:跳舞
      */
     private long sceneId;
+    /**
+     * 随机种子
+     */
+    private long seed;
 }

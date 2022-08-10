@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
@@ -41,8 +42,12 @@ public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
         }
         int pageIndex = (int) obtainMsgInfoReq.getPageIndex();
         int count = (int) obtainMsgInfoReq.getCount();
+        long seed = obtainMsgInfoReq.getSeed();
+        if(pageIndex == 1){
+            seed = new Random().nextLong();
+        }
         PageHelper.startPage(pageIndex, count);
-        List<SwiftMessagesPo> msgInfos = swiftMessagesSlaveMapper.selectMsgInfoByMsgIds(msgIds);
+        List<SwiftMessagesPo> msgInfos = swiftMessagesSlaveMapper.selectMsgInfoByMsgIds(msgIds,seed);
 
         swiftMessagesResponse.setTotal(((Page<?>) msgInfos).getTotal());
         if (msgInfos.size() < count) {
@@ -58,6 +63,7 @@ public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
             messages.add(messageInfoBo);
         });
         swiftMessagesResponse.setMessages(messages);
+        swiftMessagesResponse.setSeed(seed);
 
         return swiftMessagesResponse;
 
@@ -67,6 +73,6 @@ public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
         int supplementCount = count- msgInfos.size();
         List<Integer> tmpList = msgIds.subList(0, count * (pageIndex - 1));
         Collections.shuffle(tmpList);
-        msgInfos.addAll(swiftMessagesSlaveMapper.selectMsgInfoByMsgIds(tmpList.subList(0,supplementCount)));
+        msgInfos.addAll(swiftMessagesSlaveMapper.selectMsgInfoByMsgIds(tmpList.subList(0,supplementCount),null));
     }
 }

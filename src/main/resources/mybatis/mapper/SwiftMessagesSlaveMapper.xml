@@ -11,6 +11,10 @@
         <result property="createTime" column="create_time"/>
         <result property="updateTime" column="update_time"/>
     </resultMap>
+    <insert id="insert" useGeneratedKeys="true" keyProperty="bean.id">
+        insert into swift_messages(msg_content, score)
+        values (#{key1},#{bean.score})
+    </insert>
 
     <select id="selectMsgInfoByMsgIds" resultMap="resultMap">
         select
@@ -20,7 +24,9 @@
         <foreach collection="msgIds" separator="," open="(" close=")" item="id">
             #{id}
         </foreach>
-        order by score desc
+        <if test="seed != null">
+            order by RAND(#{seed})
+        </if>
     </select>
 
 

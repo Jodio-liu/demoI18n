@@ -1,6 +1,5 @@
 package com.example.demoi18n.controller;
 
-import cn.j.chloe.joint.coin.bean.CoinRecordSubAction;
 import com.example.demoi18n.i18n_utils.I18nMessageUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,21 +14,25 @@ public class TestController {
     private I18nMessageUtil i18nMessageUtil;
 
 
+
     @GetMapping("/hello")
     public ResponseEntity<String> hello() {
+
+
 //        applicationConfig.getBoolean("foo.test");
 //        String res = I18nMessageUtil.getMessage("foo.test");
 //        String ss = DecorationFirstTagEnum.DONATATION.getName();
 //        System.out.println(ss);
-//        String reeee = I18nMessageUtil.getMessage("key.12345");
+        String reeee = I18nMessageUtil.getMessage("key.12345");
 
-        String value = CoinRecordSubAction.CAP.getValue();
+//        String value = CoinRecordSubAction.CAP.getValue();
 
-        return new ResponseEntity<>(value, HttpStatus.OK);
+        return new ResponseEntity<>(reeee, HttpStatus.OK);
     }
 
     @GetMapping("/pageHelper")
     public ResponseEntity<String> pageHelper() {
+//        FireBaseUtil.pushSingle();
 
         return new ResponseEntity<>("", HttpStatus.OK);
     }
