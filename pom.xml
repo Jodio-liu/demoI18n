@@ -108,6 +108,36 @@
         </dependency>
 
         <dependency>
+            <groupId>org.jsoup</groupId>
+            <artifactId>jsoup</artifactId>
+            <version>1.15.3</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.ua-parser</groupId>
+            <artifactId>uap-java</artifactId>
+            <version>1.5.3</version>
+        </dependency>
+        <!-- UserAgent工具类 -->
+        <dependency>
+            <groupId>cz.mallat.uasparser</groupId>
+            <artifactId>uasparser</artifactId>
+            <version>0.6.2</version>
+        </dependency>
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+            <version>1.21</version>
+        </dependency>
+
+        <dependency>
+            <groupId>nl.basjes.parse.useragent</groupId>
+            <artifactId>yauaa</artifactId>
+            <version>7.9.1</version>
+        </dependency>
+
+
+        <dependency>
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>sesv2</artifactId>
         </dependency>
@@ -125,6 +155,11 @@
             <groupId>software.amazon.awssdk</groupId>
             <artifactId>protocol-core</artifactId>
             <version>2.17.143</version>
+        </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>2.9.0</version>
         </dependency>
     </dependencies>
     <dependencyManagement>

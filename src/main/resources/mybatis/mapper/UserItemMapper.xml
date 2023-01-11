@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demoi18n.mapper.UserItemMapper">
+
+    <resultMap id="resultMap" type="com.example.demoi18n.entity.UserItemPo">
+        <id property="id" column="id"/>
+        <result property="userId" column="user_id"/>
+        <result property="objId" column="obj_id"/>
+        <result property="objType" column="obj_type"/>
+        <result property="top" column="top"/>
+        <result property="updateTime" column="update_time"/>
+    </resultMap>
+
+    <insert id="insert">
+        insert into `user_item_recently_used_time`(`user_id`, `obj_id`, `obj_type`, `create_time`, `update_time`)
+        values (#{userId}, #{objId}, #{objType}, now(), now())
+    </insert>
+
+    <select id="queryItemByUserId" resultMap="resultMap">
+        select *
+        from user_item_recently_used_time
+        where user_id = #{userId}
+        order by top desc, update_time desc
+    </select>
+</mapper>

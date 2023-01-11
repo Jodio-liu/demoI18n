@@ -1,0 +1,38 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.j.planetj",
+      "sha256_cert_fingerprints": [
+        "3A:CB:72:CD:CF:DD:CB:28:0B:AF:FC:D5:DB:59:F9:6C:D9:5A:E7:37:69:E4:C8:A0:2A:4D:AB:A1:94:56:3F:BF"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.j.planetj",
+      "sha256_cert_fingerprints": [
+        "31:F9:07:6E:37:E5:A4:A8:51:88:4C:00:5B:61:AB:3C:79:9F:0E:76:8E:E2:37:73:3C:9A:88:5F:6D:07:2D:AE"
+      ]
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "cn.j.yoyo",
+      "sha256_cert_fingerprints": [
+        "3A:CB:72:CD:CF:DD:CB:28:0B:AF:FC:D5:DB:59:F9:6C:D9:5A:E7:37:69:E4:C8:A0:2A:4D:AB:A1:94:56:3F:BF"
+      ]
+    }
+  }
+]

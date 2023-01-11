@@ -1,0 +1,11 @@
+{
+    "applinks": {
+        "apps": [],
+        "details": [
+            {
+                "appID": "25A8V9PCHG.com.j.planetj",
+                "paths": [ "*", "/*", "/planetj/*" ]
+            }
+        ]
+    }
+}

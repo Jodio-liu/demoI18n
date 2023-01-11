@@ -73,6 +73,7 @@ public class SwiftMessageInfoServiceImpl implements SwiftMessageInfoService {
         int supplementCount = count- msgInfos.size();
         List<Integer> tmpList = msgIds.subList(0, count * (pageIndex - 1));
         Collections.shuffle(tmpList);
+
         msgInfos.addAll(swiftMessagesSlaveMapper.selectMsgInfoByMsgIds(tmpList.subList(0,supplementCount),null));
     }
 }
