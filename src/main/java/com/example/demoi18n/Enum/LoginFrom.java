@@ -15,7 +15,7 @@ public enum LoginFrom {
     tiktok(13),
     other(99); // 其他
 
-    private final int code;
+    private int code;
 
     LoginFrom(int code) {
         this.code = code;
@@ -23,6 +23,9 @@ public enum LoginFrom {
 
     public int getCode() {
         return code;
+    }
+    public void setCode(int code){
+        this.code = code;
     }
 
     public static LoginFrom findByValue(int value){
