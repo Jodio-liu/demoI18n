@@ -1,6 +1,7 @@
 package com.example.demoi18n.test;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.scheduling.annotation.Async;
 
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
@@ -13,12 +14,14 @@ public class Order implements Delayed {
     private long time;
     String name;
 
+
     public Order(String name, long time, TimeUnit unit) {
         this.name = name;
         this.time = System.currentTimeMillis() + (time > 0 ? unit.toMillis(time) : 0);
     }
 
     @Override
+    @Async
     public long getDelay(TimeUnit unit) {
         return time - System.currentTimeMillis();
     }

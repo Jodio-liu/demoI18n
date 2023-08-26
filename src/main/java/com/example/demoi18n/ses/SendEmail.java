@@ -47,8 +47,10 @@ public class SendEmail {
     static String REGION_NAME = "us-west-2";
 
     public static void main(String[] args) throws IOException {
+        String s = "$哈哈";
+        System.out.println(s.length());
         // 亚马逊ses
-        awsSES();
+//        awsSES();
 
 //        Integer t = null;
 //        LoginFrom byValue = LoginFrom.findByValue(t);

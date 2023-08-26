@@ -1,45 +1,122 @@
 package com.example.demoi18n.test;
 
-import com.alibaba.fastjson.JSON;
+import com.example.demoi18n.test.VO.PetSkinWeight;
+import com.example.demoi18n.test.VO.WishExtJsonInfo;
 import com.google.api.client.util.Lists;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
+import java.util.stream.Collectors;
 
-public class Test {
+public class Test<A, B, C, D> {
+    private A a;
+    private B b;
+    private C c;
+    private D d;
+
+    public A getA() {
+        return a;
+    }
+
+    public void setA(A a) {
+        this.a = a;
+    }
+
+    public B getB() {
+        return b;
+    }
+
+    public void setB(B b) {
+        this.b = b;
+    }
+
+    public C getC() {
+        return c;
+    }
+
+    public void setC(C c) {
+        this.c = c;
+    }
+
+    public D getD() {
+        return d;
+    }
+
+    public void setD(D d) {
+        this.d = d;
+    }
+
+    public <T extends Number & Comparable<? super Integer>> void test(T t) {
+        List<Object> s = Lists.newArrayList();
+        s.add(1);
+        s.add("23");
+        s.add(1.2);
+        System.out.println(t);
+    }
+
+    public static String calculateText(String input) {
+        StringBuilder sb = new StringBuilder();
+        String[] lines = input.split("\n");
+        int lineCount = 0;
+        for (int i = 0; i < lines.length && lineCount < 10; i++) {
+            String line = lines[i];
+            while (line.length() > 53 && lineCount < 9) {
+                int index = line.lastIndexOf(" ", 53);
+                if (index == -1) {
+                    break;
+                }
+                sb.append(line, 0, index+1);
+                line = line.substring(index+1);
+                lineCount++;
+            }
+            if (lineCount < 9) {
+                sb.append(line).append("\n");
+                lineCount++;
+            } else if (lineCount == 9 && line.length() > 53) {
+                sb.append(line, 0, 40).append("...");
+                lineCount++;
+            } else {
+                break;
+            }
+        }
+        return sb.toString();
+    }
+
+
     public static void main(String[] args) {
-        List<Integer> msgIds = new ArrayList<>();
-        for(int i=0; i<20; i++){
-            msgIds.add(i+1);
-        }
-        int pageIndex = 1;
-        int count = 3;
-        int nextInt = new Random(20).nextInt(10);
-        while((pageIndex-1) * 3 < 20){
-            extracted(msgIds, pageIndex, count, nextInt);
-            pageIndex++;
-        }
+
+        String a = "qweqewqe'11";
+        System.out.println(a.replaceAll("'", "''"));
+
+//        List<PetSkinWeight> list = Lists.newArrayList();
+//        PetSkinWeight petSkinWeight = new PetSkinWeight();
+//        petSkinWeight.setWeight(1);
+//        petSkinWeight.setCoverUrl("11111");
+//        petSkinWeight.setSkin("qqqqq");
+//        list.add(petSkinWeight);
+//        PetSkinWeight petSkinWeight1 = new PetSkinWeight();
+//        petSkinWeight1.setWeight(2);
+//        petSkinWeight1.setCoverUrl("22222");
+//        petSkinWeight1.setSkin("wwwww");
+//        list.add(petSkinWeight1);
+//        PetSkinWeight petSkinWeight2 = new PetSkinWeight();
+//        petSkinWeight2.setWeight(3);
+//        petSkinWeight2.setCoverUrl("33333");
+//        petSkinWeight2.setSkin("eeeee");
+//        list.add(petSkinWeight2);
+//
+//        List<WishExtJsonInfo> collect = list.stream().map(Test::filterPo).filter(Objects::nonNull).collect(Collectors.toList());
+//        System.out.println(collect);
     }
 
-    private static void extracted(List<Integer> msgIds, int pageIndex, int count, int seed) {
-        Collections.shuffle(msgIds, new Random(seed));
-        System.out.println(seed + ":" + JSON.toJSON(msgIds));
-        int start = (pageIndex -1) * 3;
-        int size = msgIds.size();
-        int end = Math.min(pageIndex * 3, size);
-        List<Integer> subMsgIds = msgIds.subList(0, count);
-        if(subMsgIds.size() < count){
-            supplementMsgInfos(subMsgIds, msgIds, pageIndex, count);
+    private static WishExtJsonInfo filterPo(PetSkinWeight po) {
+        if(po.getWeight() < 2){
+            return null;
+        } else {
+            WishExtJsonInfo info = new WishExtJsonInfo();
+            info.setSkin(po.getSkin());
+            return info;
         }
-        System.out.println(JSON.toJSON(subMsgIds));
+
     }
 
-    private static void supplementMsgInfos(List<Integer> subMsgIds, List<Integer> msgIds, int pageIndex, int count) {
-        int supplementCount = count - subMsgIds.size();
-        List<Integer> tmpList = msgIds.subList(0, count * (pageIndex - 1));
-        Collections.shuffle(tmpList);
-        subMsgIds.addAll(tmpList.subList(0, supplementCount));
-    }
 }
